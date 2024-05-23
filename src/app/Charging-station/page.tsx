@@ -3,6 +3,9 @@ import React from "react";
 import { MotionArticle, MotionSection } from '@/components/MotionClient'
 import ChargeStationList from "@/components/ChargeStationList";
 import { Icon } from '@iconify/react';
+import { MapProvider } from "@/providers/map-providers";
+import { MapComponent } from "@/components/map";
+
 
 
 
@@ -40,11 +43,17 @@ const ChargingStationPage = () => {
                 variants={sectionVariants}
             >
                 {/* <ChargeStationList /> */}
-                <div className="flex justify-between items-center w-full">
-                    <div className="w-1/2 p-6 flex flex-col gap-4">
+                <div className="flex justify-between w-full p-6">
+                    <div className="w-[40%]  flex flex-col gap-4">
                         <ChargeStationList />
                     </div>
-                    <div className="w-1/2">x</div>
+                    <div className="w-[60%] border border-[#035252] min-h-screen rounded-xl">
+                        <div className="m-10 border border-[#ccc] rounded-xl p-4">
+                        </div>
+                        <div className="m-10 border bg-[#035252] rounded-xl p-4 h-[20rem]">
+                        </div>
+
+                    </div>
                 </div>
             </MotionArticle>
         </MotionSection>
