@@ -63,7 +63,6 @@ export const GET_STATIONS = gql`
 	}
 `;
 
-
 /*
 ##########################
 #  QUERY STATION DETAIL  #

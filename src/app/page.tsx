@@ -1,5 +1,5 @@
 'use client'
-import React from "react";
+import React, { useState } from "react";
 import { MotionArticle, MotionSection } from '@/components/MotionClient'
 import Image from "next/image";
 import image from "@/assets/image/v3.png"
@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Icon } from '@iconify/react';
 
 const HomePage = () => {
+
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -27,6 +28,9 @@ const HomePage = () => {
       },
     },
   };
+
+
+
 
   return (
     <MotionSection
