@@ -4,7 +4,6 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import image from "@/assets/image/v1tron.webp"
 import Image from 'next/image'
-import { Icon } from '@iconify/react';
 
 
 
@@ -16,12 +15,8 @@ const Navbar = () => {
 
     const NAV_MENU_LINK = [
         {
-            label: 'how it works',
-            href: `/projects`,
-        },
-        {
             label: 'mobile app',
-            href: `/blogs`,
+            href: `/Mobile-app`,
         },
     ];
 

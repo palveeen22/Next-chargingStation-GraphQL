@@ -6,7 +6,7 @@ type TProps = {
     data: any
 }
 
-const Map: React.FC<TProps> = ({ data }) => {
+const LocationCard: React.FC<TProps> = ({ data }) => {
 
     // Check if data is not empty and has coordinates
     const hasValidData = data && data.length > 0 && data[0].coordinates && data[0].coordinates.coordinates.length === 2;
@@ -17,7 +17,7 @@ const Map: React.FC<TProps> = ({ data }) => {
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API || "Key_Access"
     })
 
     const containerStyle = {
@@ -55,4 +55,4 @@ const Map: React.FC<TProps> = ({ data }) => {
     ) : <></>
 }
 
-export default React.memo(Map)
+export default React.memo(LocationCard)

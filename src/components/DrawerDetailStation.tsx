@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import type { DrawerProps, RadioChangeEvent } from 'antd';
-import { Button, Drawer, Radio, Space } from 'antd';
+import { Drawer } from 'antd';
 import ChargeStationList from './ChargeStationList';
 import ChargeStationDetails from './ChargeStationDetails';
+import LocationCard from './LocationCard';
 
 type TProps = {
     handleClick: (id: bigint) => void;
     showDrawer: () => void
     open: boolean
-    setOpen: boolean
+    setOpen: Dispatch<SetStateAction<boolean>>;
     id: bigint | null
     setMapData: any
+    data: any
 
 }
 
-const DrawerDetailStation = ({ handleClick, showDrawer, open, setOpen, id, setMapData }: TProps) => {
+const DrawerDetailStation = ({ handleClick, showDrawer, open, setOpen, id, data }: TProps) => {
     const [placement, setPlacement] = useState<DrawerProps['placement']>('left');
 
     const onClose = () => {
@@ -40,7 +42,11 @@ const DrawerDetailStation = ({ handleClick, showDrawer, open, setOpen, id, setMa
                 key={placement}
                 height={600}
             >
-                <ChargeStationDetails id={id} setMapData={setMapData} />
+                <ChargeStationDetails id={id} setMapData={""} />
+                <div className='my-2'>
+                    <LocationCard data={data} />
+
+                </div>
             </Drawer>
         </>
     );
