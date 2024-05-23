@@ -4,10 +4,11 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import image from "@/assets/image/v1tron.webp"
 import Image from 'next/image'
-
-
+import { useState } from 'react'
+import { Icon } from '@iconify/react';
 
 const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
     let pathname = usePathname()
     if (pathname.includes('/blog/')) {
         pathname = '/blog'
@@ -18,6 +19,10 @@ const Navbar = () => {
             label: 'mobile app',
             href: `/Mobile-app`,
         },
+        {
+            label: 'how it work',
+            href: '/How-it-works',
+        }
     ];
 
     return (
@@ -63,6 +68,9 @@ const Navbar = () => {
                                 className='object-cover cursor-pointer'
                             />
                         </Link>
+                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className='focus:outline-none'>
+                            <Icon icon={isMenuOpen ? "carbon:close" : "streamline:horizontal-menu-circle-solid"} width={30} />
+                        </button>
                     </nav>
                 </div>
             </header>
@@ -71,4 +79,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar; 
