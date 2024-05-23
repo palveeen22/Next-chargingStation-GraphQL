@@ -8,6 +8,7 @@ import Image from "next/image";
 import image from "@/assets/image/v3.png"
 import Link from "next/link";
 import Card from "@/components/Card";
+import { Icon } from '@iconify/react';
 
 const HomePage = () => {
 
@@ -59,14 +60,17 @@ const HomePage = () => {
               As a licensed SPKLU operator, Voltron is building one ecosystem for charging networks across Indonesia. Discover into Voltron's impact on a better environment, and we strive to build accessible and sustainable electric transportation solutions.
             </p>
             <Link href="/Charging-station">
-              <button className="w-full bg-[#035252] text-md font-normal py-3 px-6 rounded-3xl">
-                find nearby
+              <button className="flex justify-center items-center gap-6 hover:gap-8 mx-auto bg-[#035252] py-3 px-12 rounded-3xl cursor-pointer">
+                <p className="text-md font-normal">
+                  Find Nearby
+                </p>
+                <Icon icon="ph:arrow-right-thin" width={40} />
               </button>
             </Link>
           </div>
         </div>
       </MotionArticle>
-    </MotionSection>
+    </MotionSection >
   )
 }
 

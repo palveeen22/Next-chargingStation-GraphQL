@@ -10,7 +10,8 @@ import {
 
 export function createApolloClient() {
     const httpLink = new HttpLink({
-        uri: "https://countries.trevorblades.com",
+        uri: process.env.NEXT_PUBLIC_STAGGING_V1,
+
         fetchOptions: { cache: "no-store" },
     });
 
