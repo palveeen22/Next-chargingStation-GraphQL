@@ -20,10 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ApolloWrapper>
-          {/* <main className='mx-auto flex min-h-screen  flex-col flex-wrap gap-10 px-6 md:py-12 py-4 md:gap-16'> */}
           <Navbar />
           {children}
-          {/* </main> */}
         </ApolloWrapper>
       </body>
     </html>

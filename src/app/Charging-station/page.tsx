@@ -4,10 +4,11 @@ import { MotionArticle, MotionSection } from '@/components/MotionClient'
 import ChargeStationList from "@/components/ChargeStationList";
 import { Icon } from '@iconify/react';
 import { MapProvider } from "@/providers/map-providers";
-import { MapComponent } from "@/components/map";
+import Map from "@/components/map";
 import ChargeStationDetails from "@/components/ChargeStationDetails";
 import { DraftModeProvider } from "next/dist/server/async-storage/draft-mode-provider";
 import DrawerDetailStation from "@/components/DrawerDetailStation";
+import { TChargePoints, TChargeStation } from "@/@types";
 
 
 
@@ -31,6 +32,8 @@ const ChargingStationPage = () => {
 
     const [id, setId] = useState<bigint | null>(null);
 
+    const [mapData, setMapData] = useState();
+
     const handleClick = (id: bigint) => {
         setId(id);
     };
@@ -40,18 +43,30 @@ const ChargingStationPage = () => {
             // Your logic to handle the id
             console.log(id);
         }
-    }, [id]);
+    }, [id, mapData]);
 
     const [open, setOpen] = useState<boolean>(false);
+
 
     const showDrawer = () => {
         setOpen(true);
     };
 
+    console.log(mapData, "WERRRR");
+
+
+    // const mapLocation = mapData?.map((e: TChargeStation) => {
+    //     const coordinates = e?.coordinates?.coordinates;
+
+    //     return <Map data={coordinates} />
+    // }) ?? [];
+
+
+
 
     return (
         <MotionSection
-            className='w-full flex flex-col justify-center gap-14 md:gap-20 flex-grow  bg-white p-3 md:px-10 md:py-8 lg:px-10 lg:py-8'
+            className='w-full flex flex-col justify-center gap-14 md:gap-20 flex-grow  bg-white pb-6 md:pb-0 lg:p-3 md:px-10 md:py-8 lg:px-10 lg:py-8'
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -61,23 +76,24 @@ const ChargingStationPage = () => {
                 variants={sectionVariants}
             >
                 <article className="hidden md:block lg:block">
-                    <div className="flex justify-between w-full p-6">
+                    <div className="flex justify-between w-full">
                         <div className="w-[40%] flex flex-col gap-4">
                             <ChargeStationList handleClick={handleClick} />
                         </div>
                         <div className="w-[60%] border border-[#035252] min-h-screen rounded-xl">
-                            {/* <div className="m-10 border border-[#ccc]  rounded-xl p-4">
-                        </div> */}
+                            <div className="m-10 border border-[#ccc]  rounded-xl p-4">
+                                <Map data={mapData} />
+                            </div>
                             <div className="m-5">
-                                <ChargeStationDetails id={id || null} />
+                                <ChargeStationDetails id={id || null} setMapData={setMapData} />
                             </div>
 
                         </div>
                     </div>
                 </article>
                 <article className="block md:hidden lg:hidden">
-                    <div className="flex flex-col justify-between">
-                        <DrawerDetailStation handleClick={handleClick} showDrawer={showDrawer} open={open} setOpen={setOpen} id={id} />
+                    <div className="w-full flex flex-col justify-between  min-h-screen">
+                        <DrawerDetailStation handleClick={handleClick} showDrawer={showDrawer} open={open} setOpen={setOpen} id={id} setMapData={setMapData} />
                     </div>
                 </article>
 
