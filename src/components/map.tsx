@@ -1,46 +1,58 @@
-/*Since the map was loaded on client side, 
-we need to make this component client rendered as well*/
-'use client'
+import React from 'react'
+import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
+import { TChargeStation } from '@/@types';
 
-//Map component Component from library
-import { GoogleMap } from "@react-google-maps/api";
-
-//Map's styling
-const defaultMapContainerStyle = {
-    width: '100%',
-    height: '100vh',
-    borderRadius: '15px 0px 0px 15px',
-};
-
-//K2's coordinates
-const defaultMapCenter = {
-    lat: 35.8799866,
-    lng: 76.5048004
+type TProps = {
+    data: any
 }
 
-//Default zoom level, can be adjusted
-const defaultMapZoom = 1000
+const Map: React.FC<TProps> = ({ data }) => {
 
-//Map options
-const defaultMapOptions = {
-    zoomControl: true,
-    tilt: 0,
-    gestureHandling: 'auto',
-    mapTypeId: 'satellite',
-};
+    // Check if data is not empty and has coordinates
+    const hasValidData = data && data.length > 0 && data[0].coordinates && data[0].coordinates.coordinates.length === 2;
 
-const MapComponent = () => {
-    return (
-        <div className="w-full">
-            <GoogleMap
-                mapContainerStyle={defaultMapContainerStyle}
-                center={defaultMapCenter}
-                zoom={defaultMapZoom}
-                options={defaultMapOptions}
-            >
-            </GoogleMap>
-        </div>
-    )
-};
+    // Extracting coordinates from the data if valid
+    const lat = hasValidData ? data[0].coordinates.coordinates[1] : 106.8;
+    const lng = hasValidData ? data[0].coordinates.coordinates[0] : -6.22;
 
-export { MapComponent };
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API
+    })
+
+    const containerStyle = {
+        width: '900',
+        height: '400px'
+    };
+
+    const center = {
+        lat: lat,
+        lng: lng
+    };
+
+    const [map, setMap] = React.useState<google.maps.Map | null>(null)
+
+    const onLoad = React.useCallback(function callback(map: google.maps.Map) {
+        const bounds = new window.google.maps.LatLngBounds(center);
+        map.fitBounds(bounds);
+        setMap(map)
+    }, [center])
+
+    const onUnmount = React.useCallback(function callback(map: google.maps.Map) {
+        setMap(null)
+    }, [])
+
+    return isLoaded ? (
+        <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={10}
+            onLoad={onLoad}
+            onUnmount={onUnmount}
+        >
+            <MarkerF position={center}></MarkerF>
+        </GoogleMap>
+    ) : <></>
+}
+
+export default React.memo(Map)

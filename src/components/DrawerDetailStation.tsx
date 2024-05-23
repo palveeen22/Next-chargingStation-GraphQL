@@ -10,10 +10,11 @@ type TProps = {
     open: boolean
     setOpen: boolean
     id: bigint | null
+    setMapData: any
 
 }
 
-const DrawerDetailStation = ({ handleClick, showDrawer, open, setOpen, id }: TProps) => {
+const DrawerDetailStation = ({ handleClick, showDrawer, open, setOpen, id, setMapData }: TProps) => {
     const [placement, setPlacement] = useState<DrawerProps['placement']>('left');
 
     const onClose = () => {
@@ -39,7 +40,7 @@ const DrawerDetailStation = ({ handleClick, showDrawer, open, setOpen, id }: TPr
                 key={placement}
                 height={600}
             >
-                <ChargeStationDetails id={id} />
+                <ChargeStationDetails id={id} setMapData={setMapData} />
             </Drawer>
         </>
     );

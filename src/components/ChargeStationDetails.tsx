@@ -11,9 +11,10 @@ import { MotionDiv } from './MotionClient';
 
 type TProps = {
     id: bigint | null;
+    setMapData: any
 }
 
-const ChargeStationDetails = ({ id }: TProps) => {
+const ChargeStationDetails = ({ id, setMapData }: TProps) => {
     const { loading, error, data } = useQuery(GET_DETAIL, {
         variables: { stationId: id ?? '0' },
         skip: id === null,
@@ -51,7 +52,11 @@ const ChargeStationDetails = ({ id }: TProps) => {
         },
     };
 
-    console.log(storeData, "<<<");
+    if (typeof setMapData === 'function') {
+        setMapData(storeData);
+    }
+
+
     return (
         <section>
             {storeData?.map((store: TChargeStation, index: number) => {

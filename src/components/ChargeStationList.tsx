@@ -48,13 +48,13 @@ const ChargeStationList = ({ handleClick }: TProps) => {
         <>
             {chargeStations?.map((e: TChargeStation, i: number) => {
                 return (
-                    <MotionDiv className="w-full md:w-[90%] lg:w-[90%]  border border-[#ccc] hover:border-[#035252] hover:border-2 flex justify-between gap-8 text-black shadow-md rounded-xl p-4 cursor-pointer my-2 lg:my-0"
+                    <MotionDiv className="w-full md:w-[90%] lg:w-[90%] border border-[#ccc] hover:border-[#035252] hover:border-2 flex justify-between gap-8 text-black shadow-md md:rounded-xl p-4 cursor-pointer my-0"
                         key={i}
                         onClick={() => handleClick(e?.id)}
                         variants={cardVariants}
 
                     >
-                        <div className="flex flex-col w-full gap-2">
+                        <div className="flex flex-col text-start w-full gap-2">
                             <p className='text-[#035252] text-sm lg:text-lg font-medium'>{e?.name}</p>
                             <p className='text-[#000] font-light text-xs lg:text-sm'>{truncateText(e?.address, 50)}</p>
                             {e?.operatingHours.alwaysOpen === true ? (
