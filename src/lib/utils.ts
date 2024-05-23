@@ -21,4 +21,21 @@ export default function formatDate(inputDateString: string) {
 
 
 export const formatStacks = (values: string[]) =>
-    values.toString().replaceAll(',', ' • ')
+  values.toString().replaceAll(',', ' • ')
+
+
+export function truncateText(text:string, maxLength:number) {
+  if (text.length <= maxLength) {
+    return text;
+  } else {
+    return text.slice(0, maxLength) + "...";
+  }
+}
+
+
+export function formatToIDR(number:number) {
+  return number.toLocaleString('id-ID', {
+    style: 'currency',
+    currency: 'IDR'
+  });
+}

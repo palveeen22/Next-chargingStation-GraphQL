@@ -1,16 +1,13 @@
 'use client'
-import React from "react";
-import Countries from "@/components/Countries";
-
+import React, { useState } from "react";
 import { MotionArticle, MotionSection } from '@/components/MotionClient'
 import Image from "next/image";
-
 import image from "@/assets/image/v3.png"
 import Link from "next/link";
-import Card from "@/components/Card";
 import { Icon } from '@iconify/react';
 
 const HomePage = () => {
+
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -32,6 +29,9 @@ const HomePage = () => {
     },
   };
 
+
+
+
   return (
     <MotionSection
       className='w-full flex flex-col justify-center gap-14 md:gap-20 flex-grow  bg-white px-10 py-8'
@@ -43,8 +43,8 @@ const HomePage = () => {
         className='flex flex-col gap-4'
         variants={sectionVariants}
       >
-        <div className="w-full flex justify-between">
-          <div className="">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-8 md:mb-0 w-full md:w-[60%]">
             <Image
               src={image}
               alt="voltron indonesia station"
@@ -52,11 +52,11 @@ const HomePage = () => {
               height={800}
             />
           </div>
-          <div className="w-[40%] flex flex-col justify-center items-center gap-8">
-            <h1 className="text-[#035252] text-7xl font-bold text-start">
+          <div className="w-full md:w-[40%] flex flex-col justify-center items-center gap-8">
+            <h1 className="text-[#035252] text-5xl md:text-7xl font-bold text-center md:text-start">
               Voltron for Everyone
             </h1>
-            <p className="text-[#035252] text-xl text-justify my-5">
+            <p className="text-[#035252] text-lg md:text-xl text-center md:text-justify my-5">
               As a licensed SPKLU operator, Voltron is building one ecosystem for charging networks across Indonesia. Discover into Voltron's impact on a better environment, and we strive to build accessible and sustainable electric transportation solutions.
             </p>
             <Link href="/Charging-station">
