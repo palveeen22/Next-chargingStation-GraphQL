@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { Dispatch, SetStateAction, memo } from 'react';
 import { TChargeStation } from '@/@types';
 import { GET_DETAIL } from '@/graphql/queries';
 import { useQuery } from '@apollo/client';
@@ -11,7 +11,7 @@ import { MotionDiv } from './MotionClient';
 
 type TProps = {
     id: bigint | null;
-    setMapData: any
+    setMapData: Dispatch<SetStateAction<TChargeStation[]>>;
 }
 
 const ChargeStationDetails = ({ id, setMapData }: TProps) => {

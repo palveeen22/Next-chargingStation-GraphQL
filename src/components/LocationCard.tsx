@@ -3,7 +3,7 @@ import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
 import { TChargeStation } from '@/@types';
 
 type TProps = {
-    data: any
+    data: TChargeStation[] | undefined
 }
 
 const LocationCard: React.FC<TProps> = ({ data }) => {
