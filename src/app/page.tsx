@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react";
+import React from "react";
 import { MotionArticle, MotionSection } from '@/components/MotionClient'
 import Image from "next/image";
 import image from "@/assets/image/v3.png"
