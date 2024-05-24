@@ -18,12 +18,12 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/palveeen22/test-orderfaz.git
+   https://github.com/palveeen22/test-next-voltron.git
 
 2. Open the repository:
 
    ```bash
-   cd test-orderfaz
+   test-next-voltron
    npm install
 
 3. Run the App:
@@ -31,7 +31,13 @@ Before you begin, ensure you have met the following requirements:
    ```bash
    npm run dev
    
-4. Open Local
+4. Run the Test:
    
-```bash
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   npm run test:watch
+   
+5. Additional Commands
+   - when you fetch probrem when run npm install
+   ```bash
+   npm install --force
+
