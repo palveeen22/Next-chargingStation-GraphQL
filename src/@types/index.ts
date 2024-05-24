@@ -1,7 +1,10 @@
 export type TChargeStation = {
 	id: number | bigint | null;
 	name: string;
-	coordinates: { latitude: number; longitude: number };
+	coordinates: {
+		coordinates: [number, number];
+		type: string;
+	};
 	address: string;
 	city: string;
 	state: string;
@@ -9,12 +12,12 @@ export type TChargeStation = {
 	operatingHours: {
 		alwaysOpen: boolean;
 		openingDays: [
-      {
-        active: boolean;
-        close: string;
-        day: string;
-        open: string
-      }
+			{
+				active: boolean;
+				close: string;
+				day: string;
+				open: string;
+			}
 		];
 	};
 	chargePoints: [

@@ -5,10 +5,14 @@ import { cn } from '@/lib/utils'
 import image from "@/assets/image/v1tron.webp"
 import Image from 'next/image'
 import { useState } from 'react'
-import { Icon } from '@iconify/react';
 
 const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
     let pathname = usePathname()
     if (pathname.includes('/blog/')) {
         pathname = '/blog'
@@ -17,17 +21,14 @@ const Navbar = () => {
     const NAV_MENU_LINK = [
         {
             label: 'mobile app',
-            href: `/Mobile-app`,
+            href: `/#Mobile-app`,
         },
-        {
-            label: 'how it work',
-            href: '/How-it-works',
-        }
     ];
+
 
     return (
         <>
-            <header className='hidden md:block lg:block w-full bg-[#035252] px-20 py-8'>
+            <header className='w-full bg-[#035252] px-5 md:px-20 py-6 md:py-8'>
                 <nav className='flex justify-between items-center'>
                     <Link href='/'>
                         <Image
@@ -38,7 +39,7 @@ const Navbar = () => {
                             className='object-cover cursor-pointer'
                         />
                     </Link>
-                    <div className='flex justify-between items-center gap-8'>
+                    {/* <div className='flex justify-between items-center gap-8'>
                         {NAV_MENU_LINK.map((menu, index) => (
                             <Link
                                 key={index}
@@ -52,31 +53,11 @@ const Navbar = () => {
                                 {menu.label.toLocaleUpperCase()}
                             </Link>
                         ))}
-                    </div>
+                    </div> */}
                 </nav>
             </header>
-
-            <header className='block md:hidden lg:hidden w-full bg-[#035252] px-5 py-6 items-center'>
-                <div className='blok md:hidden lg:hidden'>
-                    <nav className='flex justify-between items-center'>
-                        <Link href='/'>
-                            <Image
-                                src={image}
-                                alt="voltron image"
-                                width={120}
-                                height={120}
-                                className='object-cover cursor-pointer'
-                            />
-                        </Link>
-                        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className='focus:outline-none'>
-                            <Icon icon={isMenuOpen ? "carbon:close" : "streamline:horizontal-menu-circle-solid"} width={30} />
-                        </button>
-                    </nav>
-                </div>
-            </header>
-
         </>
     )
 }
 
-export default Navbar; 
+export default Navbar;

@@ -11,7 +11,6 @@ type TProps = {
     open: boolean
     setOpen: Dispatch<SetStateAction<boolean>>;
     id: bigint | null
-    setMapData: any
     data: any
 
 }
@@ -42,7 +41,7 @@ const DrawerDetailStation = ({ handleClick, showDrawer, open, setOpen, id, data 
                 key={placement}
                 height={600}
             >
-                <ChargeStationDetails id={id} setMapData={""} />
+                <ChargeStationDetails id={id} setMapData={data} />
                 <div className='my-2'>
                     <LocationCard data={data} />
 
