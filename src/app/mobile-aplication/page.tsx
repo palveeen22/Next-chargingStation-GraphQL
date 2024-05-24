@@ -2,7 +2,7 @@
 import React from "react";
 import { MotionArticle, MotionSection } from '@/components/MotionClient'
 import Image from "next/image";
-import image from "@/assets/image/phone1.webp"
+import image from "../../../public/assets/image/phone1.webp"
 import DownloadButtons from "@/components/DownloadButton";
 
 const MobilePage = () => {
