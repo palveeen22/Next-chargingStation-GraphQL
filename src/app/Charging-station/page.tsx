@@ -2,15 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { MotionArticle, MotionSection } from '@/components/MotionClient'
 import ChargeStationList from "@/components/ChargeStationList";
-import { Icon } from '@iconify/react';
-import { MapProvider } from "@/providers/map-providers";
-import Map from "@/components/map";
 import ChargeStationDetails from "@/components/ChargeStationDetails";
-import { DraftModeProvider } from "next/dist/server/async-storage/draft-mode-provider";
 import DrawerDetailStation from "@/components/DrawerDetailStation";
-import { TChargePoints, TChargeStation } from "@/@types";
-
-
+import LocationCard from "@/components/LocationCard";
 
 
 const ChargingStationPage = () => {
@@ -52,18 +46,6 @@ const ChargingStationPage = () => {
         setOpen(true);
     };
 
-    console.log(mapData, "WERRRR");
-
-
-    // const mapLocation = mapData?.map((e: TChargeStation) => {
-    //     const coordinates = e?.coordinates?.coordinates;
-
-    //     return <Map data={coordinates} />
-    // }) ?? [];
-
-
-
-
     return (
         <MotionSection
             className='w-full flex flex-col justify-center gap-14 md:gap-20 flex-grow  bg-white pb-6 md:pb-0 lg:p-3 md:px-10 md:py-8 lg:px-10 lg:py-8'
@@ -82,7 +64,7 @@ const ChargingStationPage = () => {
                         </div>
                         <div className="w-[60%] border border-[#035252] min-h-screen rounded-xl">
                             <div className="m-10 border border-[#ccc]  rounded-xl p-4">
-                                <Map data={mapData} />
+                                <LocationCard data={mapData} />
                             </div>
                             <div className="m-5">
                                 <ChargeStationDetails id={id || null} setMapData={setMapData} />
@@ -93,7 +75,7 @@ const ChargingStationPage = () => {
                 </article>
                 <article className="block md:hidden lg:hidden">
                     <div className="w-full flex flex-col justify-between  min-h-screen">
-                        <DrawerDetailStation handleClick={handleClick} showDrawer={showDrawer} open={open} setOpen={setOpen} id={id} setMapData={setMapData} />
+                        <DrawerDetailStation handleClick={handleClick} showDrawer={showDrawer} open={open} setOpen={setOpen} id={id} data={mapData} />
                     </div>
                 </article>
 

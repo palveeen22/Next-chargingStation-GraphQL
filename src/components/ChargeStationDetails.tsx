@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { TChargePoints, TChargeStation } from '@/@types';
+import { TChargeStation } from '@/@types';
 import { GET_DETAIL } from '@/graphql/queries';
 import { useQuery } from '@apollo/client';
 import { Icon } from '@iconify/react';
