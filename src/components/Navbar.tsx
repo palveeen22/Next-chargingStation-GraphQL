@@ -2,33 +2,29 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
-import image from "@/assets/image/v1tron.webp"
+import image from "../../public/assets/image/v1tron.webp"
 import Image from 'next/image'
 import { useState } from 'react'
+import { Icon } from "@iconify/react/dist/iconify.js";
+
+export const NAV_MENU_LINK = [
+    {
+        label: 'mobile app',
+        href: `/mobile-aplication`,
+    },
+];
 
 const Navbar = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const pathname = usePathname();
 
-    const showModal = () => {
-        setIsModalOpen(true);
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
     };
-
-    let pathname = usePathname()
-    if (pathname.includes('/blog/')) {
-        pathname = '/blog'
-    }
-
-    const NAV_MENU_LINK = [
-        {
-            label: 'mobile app',
-            href: `/#Mobile-app`,
-        },
-    ];
-
 
     return (
         <>
-            <header className='w-full bg-[#035252] px-5 md:px-20 py-6 md:py-8'>
+            <header className='hidden md:block lg:block w-full bg-[#035252] px-5 md:px-20 py-6 md:py-8'>
                 <nav className='flex justify-between items-center'>
                     <Link href='/'>
                         <Image
@@ -39,7 +35,7 @@ const Navbar = () => {
                             className='object-cover cursor-pointer'
                         />
                     </Link>
-                    {/* <div className='flex justify-between items-center gap-8'>
+                    <div className='flex justify-between items-center gap-8'>
                         {NAV_MENU_LINK.map((menu, index) => (
                             <Link
                                 key={index}
@@ -53,7 +49,42 @@ const Navbar = () => {
                                 {menu.label.toLocaleUpperCase()}
                             </Link>
                         ))}
-                    </div> */}
+                    </div>
+                </nav>
+            </header>
+            <header className='block md:hidden lg:hidden w-full bg-[#035252] px-5 md:px-20 py-6 md:py-8'>
+                <nav className='flex justify-between items-center'>
+                    <Link href='/'>
+                        <Image
+                            src={image}
+                            alt="voltron image"
+                            width={120}
+                            height={120}
+                            className='object-cover cursor-pointer'
+                        />
+                    </Link>
+                    <div className='relative'>
+                        <Icon
+                            icon="ri:menu-3-fill"
+                            width={25}
+                            onClick={toggleDropdown}
+                            className="cursor-pointer"
+                        />
+                        {isDropdownOpen && (
+                            <div className='absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50 font-semibold'>
+                                {NAV_MENU_LINK.map((menu, index) => (
+                                    <Link
+                                        key={index}
+                                        href={menu.href}
+                                        className='block px-4 py-2 text-[#035252]'
+                                        onClick={() => setIsDropdownOpen(false)}
+                                    >
+                                        {menu.label.toLocaleUpperCase()}
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 </nav>
             </header>
         </>

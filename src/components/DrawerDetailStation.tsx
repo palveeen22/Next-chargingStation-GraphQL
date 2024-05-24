@@ -44,7 +44,6 @@ const DrawerDetailStation = ({ handleClick, showDrawer, open, setOpen, id, data 
                 <ChargeStationDetails id={id} setMapData={data} />
                 <div className='my-2'>
                     <LocationCard data={data} />
-
                 </div>
             </Drawer>
         </>
