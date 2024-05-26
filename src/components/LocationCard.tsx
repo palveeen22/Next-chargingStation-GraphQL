@@ -6,7 +6,7 @@ type TProps = {
     data: TChargeStation[] | undefined
 }
 
-const LocationCard: React.FC<TProps> = ({ data }) => {
+const LocationCard = ({ data }: TProps) => {
 
     // Check if data is not empty and has coordinates
     const hasValidData = data && data.length > 0 && data[0].coordinates && data[0].coordinates.coordinates.length === 2;

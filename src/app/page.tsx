@@ -1,10 +1,11 @@
 'use client'
-import React from "react";
+import React, { Fragment } from "react";
 import { MotionArticle, MotionSection } from '@/components/MotionClient'
 import Image from "next/image";
 import image from "../../public/assets/image/v3.png"
 import Link from "next/link";
 import { Icon } from '@iconify/react';
+
 
 const HomePage = () => {
 
@@ -33,7 +34,7 @@ const HomePage = () => {
 
 
   return (
-    <>
+    <Fragment>
       <MotionSection
         className='w-full flex flex-col justify-center gap-14 md:gap-20 flex-grow  bg-white px-10 py-8'
         variants={containerVariants}
@@ -61,7 +62,7 @@ const HomePage = () => {
                 As a licensed SPKLU operator, Voltron is building one ecosystem for charging networks across Indonesia. Discover into Voltron's impact on a better environment, and we strive to build accessible and sustainable electric transportation solutions.
               </p>
               <Link href="/charging-stations">
-                <button className="flex justify-center items-center gap-6 hover:gap-8 mx-auto bg-[#035252] py-3 px-12 rounded-3xl cursor-pointer">
+                <button className="flex justify-center items-center gap-6 hover:gap-8 mx-auto bg-[#035252] py-3 px-12 rounded-xl cursor-pointer">
                   <p className="text-md font-normal">
                     Find Nearby
                   </p>
@@ -72,7 +73,7 @@ const HomePage = () => {
           </div>
         </MotionArticle>
       </MotionSection >
-    </>
+    </Fragment>
   )
 }
 
