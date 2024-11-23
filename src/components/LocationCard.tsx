@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
 import { TChargeStation } from '@/@types';
 
@@ -25,10 +25,11 @@ const LocationCard = ({ data }: TProps) => {
         height: '400px'
     };
 
-    const center = {
+    // Memoize the center object to prevent unnecessary rerenders
+    const center = useMemo(() => ({
         lat: lat,
         lng: lng
-    };
+    }), [lat, lng]);
 
     const [map, setMap] = React.useState<google.maps.Map | null>(null)
 
