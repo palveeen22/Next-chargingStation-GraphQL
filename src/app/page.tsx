@@ -59,7 +59,7 @@ const HomePage = () => {
                 Voltron for Everyone
               </h1>
               <p className="text-[#035252] text-lg md:text-xl text-center md:text-justify my-5">
-                As a licensed SPKLU operator, Voltron is building one ecosystem for charging networks across Indonesia. Discover into Voltron's impact on a better environment, and we strive to build accessible and sustainable electric transportation solutions.
+                As a licensed SPKLU operator, Voltron is building one ecosystem for charging networks across Indonesia. Discover into Voltrons impact on a better environment, and we strive to build accessible and sustainable electric transportation solutions.
               </p>
               <Link href="/charging-stations">
                 <button className="flex justify-center items-center gap-6 hover:gap-8 mx-auto bg-[#035252] py-3 px-12 rounded-xl cursor-pointer">

@@ -1,5 +1,5 @@
 export type TChargeStation = {
-	id: number | bigint | null;
+	id: number | bigint | any;
 	name: string;
 	coordinates: {
 		coordinates: [number, number];
@@ -22,7 +22,7 @@ export type TChargeStation = {
 	};
 	chargePoints: [
 		{
-			id: string;
+			id: any;
 			isAvailable: string;
 			online: boolean;
 			chargePointConnectors: [

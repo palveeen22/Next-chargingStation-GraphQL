@@ -21,7 +21,7 @@ const ChargeStationList = ({ handleClick }: TProps) => {
 
     const chargeStations = data?.publicChargeStation
 
-    console.log(chargeStations, "<<<");
+    // console.log(chargeStations, "<<<");
 
     const sectionVariants = {
         hidden: { opacity: 0, y: 20 },
@@ -63,7 +63,7 @@ const ChargeStationList = ({ handleClick }: TProps) => {
                             ) : (
                                 ""
                             )}
-                            {e?.chargePoints?.length === 0 ? (
+                            {e?.chargePoints?.length === null ? (
                                 <p className="text-gray-900 font-light text-sm">Coming Soon</p>
                             ) : (
                                 <p className="text-gray-900 font-light text-xs lg:text-sm">{e?.chargePoints.length} Available</p>
